@@ -22,7 +22,7 @@ mongoose.connect(MONGODB_URI, {
 
 // Routes
 app.use(require("./routes/routes.js"));
-app.use(require("./rouges/html-routes"));
+app.use(require("./routes/html-routes"));
 
 app.listen(PORT, () => {
   console.log(`App running on: ${PORT}!`);
