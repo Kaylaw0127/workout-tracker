@@ -1,10 +1,10 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const routes = require("./controllers/controller.js");
+const routes = require("./controllers/controller");
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
 
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 

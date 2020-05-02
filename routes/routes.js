@@ -1,10 +1,25 @@
 const router = require("express").Router();
+const Fitness = require("../models/index")
 
-const Fitness = require(`/api/workouts`, (req, res) => {
-  Fitness.create({}).then((dbWorkouts) => {
-    res.json(dbWorkouts);
+//ROUTES
+// creating workout
+router.post(`/api/workouts`, (req, res) => {
+    Fitness.create({})
+    .then(dbWorkouts => {
+        res.json(dbWorkouts)
+    })
+})
+
+//finding workout and updating 
+router.put("/api/workouts/:id", ({ body, params }, res) => {
+    Fitness.findByIdAndUpdate(
+      params.id,
+      { $push: { exercises: body } },
+      )
+      .then(dbWorkouts => {
+        res.json(dbWorkouts);
+      })
   });
-});
 
 // previous workout 
 router.get("/api/workouts", (req, res) => {
